@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.preview {
+  color: lightgray;
+  margin: 16px;
+}
+
+.inputWrapper {
+  display: inline;
+}
+
+.image {
+  width: 200px;
+}
+
+.submitError {
+  color: red;
+  padding: 8px 0;
+}

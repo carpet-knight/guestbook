@@ -1,17 +1,13 @@
-FROM node:18 as build
+FROM node:14.3-stretch as build
 
 COPY package.json package-lock.json *.js /frontend/
 
 WORKDIR /frontend
-
-COPY ./scripts/ ./scripts/
-COPY ./config/ ./config/
-COPY ./public/ ./public/
-COPY ./src ./src
-
 RUN npm install
 
-#RUN npm run build
+COPY ./src/ ./src/
+
+RUN npm run build
 
 FROM nginx:alpine
 

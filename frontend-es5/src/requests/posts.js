@@ -1,7 +1,6 @@
-const env =  {
-  type: 'development',
-  api: 'http://localhost:8070',
-}
+import {fetch} from 'whatwg-fetch'
+// eslint-disable-next-line import/extensions,import/no-unresolved
+import env from 'env'
 
 const endpoint = `${env.api}/entries`
 

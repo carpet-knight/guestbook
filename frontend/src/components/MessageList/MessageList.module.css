@@ -1,0 +1,13 @@
+.messageList {
+  margin-top: 32px;
+}
+
+.emptyList {
+  margin-top: 16px;
+  color: gray;
+}
+
+.parseErrors {
+  color: red;
+  padding: 8px 0;
+}
