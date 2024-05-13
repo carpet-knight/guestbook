@@ -95,6 +95,14 @@ object Build_BuildBackendImage : BuildType({
         checkoutMode = CheckoutMode.ON_AGENT
     }
 
+    steps {
+        script {
+            name = "Build Image"
+            id = "Build_Image"
+            scriptContent = "echo Emulate Build Backend Image"
+        }
+    }
+
     features {
         dockerSupport {
             cleanupPushedImages = true
