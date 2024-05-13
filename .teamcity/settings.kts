@@ -269,13 +269,7 @@ object Deploy_BuildRdImage : BuildType({
     steps {
         script {
             name = "packer"
-            workingDir = "infrastructure/rd"
-            scriptContent = """
-                set -e -x -u
-                
-                packer build packer.json
-            """.trimIndent()
-            dockerImage = "hashicorp/packer:latest"
+            scriptContent = "echo Emulate Build Remote Development AMI"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
