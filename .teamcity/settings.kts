@@ -97,16 +97,6 @@ object Build_BuildBackendImage : BuildType({
 
     steps {
         dockerCommand {
-            name = "Build Image"
-            commandType = build {
-                source = file {
-                    path = "backend/Dockerfile"
-                }
-                namesAndTags = "669659701994.dkr.ecr.us-west-2.amazonaws.com/guestbook-backend:%build.number%"
-                commandArgs = "--pull --build-arg JAR_FILE=build/*.jar"
-            }
-        }
-        dockerCommand {
             name = "Push Image"
             commandType = push {
                 namesAndTags = "669659701994.dkr.ecr.us-west-2.amazonaws.com/guestbook-backend:%build.number%"
