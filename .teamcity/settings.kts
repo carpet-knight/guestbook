@@ -95,15 +95,6 @@ object Build_BuildBackendImage : BuildType({
         checkoutMode = CheckoutMode.ON_AGENT
     }
 
-    steps {
-        dockerCommand {
-            name = "Push Image"
-            commandType = push {
-                namesAndTags = "669659701994.dkr.ecr.us-west-2.amazonaws.com/guestbook-backend:%build.number%"
-            }
-        }
-    }
-
     features {
         dockerSupport {
             cleanupPushedImages = true
