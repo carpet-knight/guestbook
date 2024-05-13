@@ -237,13 +237,7 @@ object Deploy_BuildBastion : BuildType({
     steps {
         script {
             name = "packer"
-            workingDir = "infrastructure/bastion"
-            scriptContent = """
-                set -e -x -u
-                
-                packer build packer.json
-            """.trimIndent()
-            dockerImage = "hashicorp/packer:latest"
+            scriptContent = "echo Emulate Build Bastion Host AMI"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
         }
