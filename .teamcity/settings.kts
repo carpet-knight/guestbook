@@ -140,15 +140,6 @@ object Build_BuildFrontend : BuildType({
     }
 
     steps {
-        script {
-            enabled = false
-            workingDir = "frontend"
-            scriptContent = """
-                npm install
-                npm run build
-            """.trimIndent()
-            dockerImage = "node"
-        }
         nodeJS {
             workingDir = "frontend"
             shellScript = """
