@@ -173,12 +173,6 @@ object Build_BuildFrontendImage : BuildType({
                 commandArgs = "--pull"
             }
         }
-        dockerCommand {
-            name = "Push Image"
-            commandType = push {
-                namesAndTags = "669659701994.dkr.ecr.us-west-2.amazonaws.com/guestbook-frontend:%build.number%"
-            }
-        }
     }
 
     dependencies {
