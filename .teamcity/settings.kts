@@ -275,13 +275,6 @@ object Deploy_BuildRdImage : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-            triggerRules = "+:infrastructure/rd/**"
-            branchFilter = "+:master"
-        }
-    }
-
     features {
         dockerSupport {
             cleanupPushedImages = true
