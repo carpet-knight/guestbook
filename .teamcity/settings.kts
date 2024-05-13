@@ -351,28 +351,9 @@ object Deploy_DeployProduction : BuildType({
     steps {
         script {
             name = "deploy"
-            workingDir = "tf/prod"
-            scriptContent = """
-                set -e -u
-                
-                aws_credentials=${'$'}(aws sts assume-role \
-                                           --role-arn arn:aws:iam::669659701994:role/TeamCityDeployRole \
-                                           --role-session-name "TeamCity-%build.number%")
-                
-                export AWS_ACCESS_KEY_ID=${'$'}(echo ${'$'}aws_credentials|jq '.Credentials.AccessKeyId'|tr -d '"')
-                export AWS_SECRET_ACCESS_KEY=${'$'}(echo ${'$'}aws_credentials|jq '.Credentials.SecretAccessKey'|tr -d '"')
-                export AWS_SESSION_TOKEN=${'$'}(echo ${'$'}aws_credentials|jq '.Credentials.SessionToken'|tr -d '"')
-                
-                terraform init
-                
-                terraform apply -auto-approve \
-                -var backend_version=${Build_BuildBackendImage.depParamRefs.buildNumber} \
-                -var frontend_version=${Build_BuildFrontendImage.depParamRefs.buildNumber}
-            """.trimIndent()
-            dockerImage = "guestbook.registry.jetbrains.space/p/gb/containers/terraformx:latest"
+            scriptContent = "echo Emulate Deploy to Production"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
-            dockerRunParameters = "--rm -v /var/run/docker.sock:/var/run/docker.sock "
         }
     }
 
