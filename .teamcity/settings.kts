@@ -228,12 +228,6 @@ object Build_DeployImage : BuildType({
                 commandArgs = "--pull"
             }
         }
-        dockerCommand {
-            name = "Push Image"
-            commandType = push {
-                namesAndTags = "guestbook.registry.jetbrains.space/p/gb/containers/terraformx:latest"
-            }
-        }
     }
 
     features {
