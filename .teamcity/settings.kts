@@ -217,16 +217,9 @@ object Build_DeployImage : BuildType({
     }
 
     steps {
-        dockerCommand {
+        script {
             name = "Build Image"
-            commandType = build {
-                source = file {
-                    path = "infrastructure/tf/Dockerfile"
-                }
-                contextDir = "infrastructure/tf"
-                namesAndTags = "guestbook.registry.jetbrains.space/p/gb/containers/terraformx:latest"
-                commandArgs = "--pull"
-            }
+            scriptContent = "echo Emulate Build Deploy Image"
         }
     }
 
