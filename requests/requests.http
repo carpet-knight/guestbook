@@ -1,0 +1,55 @@
+POST {{host}}/entries
+Content-Type: application/json
+
+{
+  "author": "Example Author",
+  "imageUrl": "https://i.imgur.com/Gg2Xz38.jpg",
+  "message": "This is the message written in the guestbook"
+}
+
+> {%
+ if(response.status === 201){
+     client.global.set("entry_id", response.body.data.entryId);
+     client.log(response.body.data.entryId);
+ }
+%}
+
+###
+
+GET {{host}}/entries/{{entry_id}}
+
+# After a new entry is posted, use this endpoint to check on its status
+
+###
+
+GET {{host}}/entries
+Content-Type: application/json
+
+# This will list the last ten entries in the guestbook
+
+###
+POST {{host}}/entries
+Content-Type: application/json
+
+# This generates a 400 error
+
+{
+  "name": "Example",
+  "img_url": "invalid url",
+  "msg": "This is the message written in the guestbook"
+}
+
+###
+
+POST {{host}}/entries
+Content-Type: application/json
+
+# This generates a 503 error
+
+{
+  "author": "Example",
+  "sourcePictureUrl": "https://example.com/nonexisting/picture.png",
+  "message": "This is the message written in the guestbook"
+}
+
+###

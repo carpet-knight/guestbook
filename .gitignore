@@ -1,0 +1,7 @@
+.idea/
+*.iml
+out/
+.gradle/
+build/
+.teamcity/target/
+.DS_Store
