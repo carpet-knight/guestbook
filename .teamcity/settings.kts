@@ -3,7 +3,6 @@ import jetbrains.buildServer.configs.kotlin.CustomChart
 import jetbrains.buildServer.configs.kotlin.CustomChart.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -162,16 +161,9 @@ object Build_BuildFrontendImage : BuildType({
     }
 
     steps {
-        dockerCommand {
+        script {
             name = "Build Image"
-            commandType = build {
-                source = file {
-                    path = "frontend/docker/Dockerfile"
-                }
-                contextDir = "frontend/docker"
-                namesAndTags = "669659701994.dkr.ecr.us-west-2.amazonaws.com/guestbook-frontend:%build.number%"
-                commandArgs = "--pull"
-            }
+            scriptContent = "echo Emulate Build Frontend Image"
         }
     }
 
