@@ -129,7 +129,7 @@ object Build_BuildBackendImage : BuildType({
 object Build_BuildFrontend : BuildType({
     name = "Build Frontend"
 
-    artifactRules = "frontend/docker/dist/* => dist/"
+    artifactRules = "frontend/dist/* => dist/"
     buildNumberPattern = "1.0.%build.counter%"
 
     vcs {
